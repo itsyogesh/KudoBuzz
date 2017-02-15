@@ -8,9 +8,9 @@ const User = require('../models').user
 exports.postMessage = (req, res, next) => {
   const from = req.user._id
   const to = req.body.to
-  const send_at = req.body.send_at,
-  const message = req.body.message,
-  const interval = req.body.interval,
+  const send_at = req.body.send_at
+  const message = req.body.message
+  const interval = req.body.interval
   const peak_hour = req.body.peak_hour
 
   if(!to || !validator.isMongoId(to)) {
@@ -65,7 +65,7 @@ exports.postMessage = (req, res, next) => {
       const peak_hour = user.settings.peak_hour
       const send_at = (moment().startOf('day').add(peak_hour, 'hours') > moment().now())
                       ? moment().startOf('day').add(peak_hour, 'hours')
-                      : moment().endOf('day').add(peak_hour, 'hours') 
+                      : moment().endOf('day').add(peak_hour, 'hours')
       let message = messageUtils.setMessage(from, to, message, send_at)
       message.save()
       .then((message) => {

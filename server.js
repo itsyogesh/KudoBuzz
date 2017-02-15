@@ -6,6 +6,10 @@ const cors = require('cors')
 
 require('dotenv').config()
 
+const router = require('./router')
+
+mongoose.connect(process.env.DATABASE)
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -24,9 +28,7 @@ app.use((err, req, res, next) => {
   return res.status(err.statusCode || 500).json(err)
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello there')
-})
+router(app)
 
 app.listen(process.env.PORT)
 

@@ -20,14 +20,14 @@ const MessageSchema = new mongoose.Schema({
   is_sent: {
     type: Boolean,
     default: false
-  }
+  },
   send_at: {
     type: Date,
     default: Date.now()
-  }
+  },
   sent_at: {
     type: Date
   }
 })
 
-modules.export = mongoose.model('Message', MessageSchema)
+module.exports = mongoose.model('Message', MessageSchema)
