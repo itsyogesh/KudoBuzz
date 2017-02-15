@@ -13,10 +13,10 @@
     "body-parser": "^1.16.1",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
-    "dotfile": "0.0.2",
     "express": "^4.14.1",
-    "joi": "^10.2.2",
+    "moment": "^2.17.1",
     "mongoose": "^4.8.2",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "validator": "^6.2.1"
   }
 }

@@ -14,6 +14,16 @@ app.use(logger('dev'))
 
 app.use(cors())
 
+app.use((err, req, res, next) => {
+  logger.error(err)
+
+  if(req.app.get('env') !== 'development') {
+    delete err.stack
+  }
+
+  return res.status(err.statusCode || 500).json(err)
+})
+
 app.get('/', (req, res) => {
   res.send('Hello there')
 })
