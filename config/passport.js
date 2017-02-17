@@ -12,7 +12,6 @@ const JWTOptions = {
   jwtFromRequest: ExtractJWT.fromAuthHeader(),
   secretOrKey: 'process.env.SECRET'
 }
-console.log(process.env.SECRET)
 
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
   User.findOne({ email }, (err, user) => {
@@ -46,4 +45,5 @@ const JWTLogin = new JWTStrategy(JWTOptions, (payload, done) => {
 passport.use(JWTLogin)
 passport.use(localLogin)
 
+exports.requireLogin = passport.authenticate('local', {session: false})
 exports.isAuthenticated = passport.authenticate('jwt', {session: false})

@@ -1,6 +1,6 @@
 const validator = require('validator')
 const moment = require('moment')
-const messageUtils = require('../lib/messageUtils')
+const messageUtils = require('../lib/utils/message')
 
 const Message = require('../models').message
 const User = require('../models').user

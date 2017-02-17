@@ -2,7 +2,7 @@ const JWT = require('jsonwebtoken'),
       crypto = require('crypto'),
       validator = require('validator'),
       User = require('../models').user,
-      authUtils = require('../lib/auth')
+      userUtils = require('../lib/utils/user')
 
 
 function generateToken(user) {
@@ -12,7 +12,7 @@ function generateToken(user) {
 }
 
 exports.login = (req, res, next) => {
-  const userInfo = authUtils.setUserInfo(req.user);
+  const userInfo = userUtils.setUserInfo(req.user);
 
   res.status(200).json({
     token: `JWT ${generateToken(userInfo)}`
@@ -72,7 +72,7 @@ exports.register = (req, res, next) => {
       // Add queue for newletter signup
       // Add queue for sending welcome email
 
-      const userInfo = authUtils.setUserInfo(user)
+      const userInfo = userUtils.setUserInfo(user)
 
       res.status(201).json({
         token: `JWT ${generateToken(userInfo)}`

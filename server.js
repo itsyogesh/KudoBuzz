@@ -8,6 +8,7 @@ require('dotenv').config()
 
 const router = require('./router')
 
+mongoose.Promise = global.Promise
 mongoose.connect(process.env.DATABASE)
 
 const app = express();
